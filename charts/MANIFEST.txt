@@ -1,0 +1,422 @@
+================================================================================
+POLITICAL CHARTS REPOSITORY - MANIFEST
+================================================================================
+
+Created: 2024-10-26
+Version: 1.0.0
+Status: Complete and Ready to Use
+
+================================================================================
+REPOSITORY OVERVIEW
+================================================================================
+
+A comprehensive file and folder management system for organizing political
+visualization charts with clear structure, documentation, and automation.
+
+Total Files Created: 21
+Total Directories: 8
+Total Size: 136KB
+
+================================================================================
+DOCUMENTATION FILES (9)
+================================================================================
+
+1. README.md
+   - Main repository documentation
+   - Overview of chart types
+   - Quick start guide
+   - Dependencies and requirements
+
+2. CHART_STATUS.md
+   - Development status tracker
+   - Status of all charts
+   - Update log
+   - Development priorities
+
+3. NAMING_CONVENTIONS.md
+   - File naming standards
+   - Directory naming conventions
+   - Python naming conventions
+   - Validation checklist
+
+4. INDEX.md
+   - Quick reference guide
+   - File locations
+   - Common commands
+   - Key concepts
+
+5. DIRECTORY_STRUCTURE.md
+   - Visual directory tree
+   - File type legend
+   - Directory descriptions
+   - File relationships
+
+6. SETUP_GUIDE.md
+   - Complete setup instructions
+   - Prerequisites
+   - Configuration guide
+   - Troubleshooting
+
+7. IMPLEMENTATION_SUMMARY.md
+   - Overview of what was created
+   - File statistics
+   - Key features
+   - Benefits
+
+8. QUICK_START.md
+   - 5-minute quick start
+   - Essential commands
+   - Common tasks
+   - Verification checklist
+
+9. MANIFEST.txt
+   - This file
+   - Complete inventory
+
+================================================================================
+CONFIGURATION FILES (1)
+================================================================================
+
+1. CONFIG.yaml
+   - Global configuration
+   - Color scheme definitions
+   - Plotly settings
+   - Data source definitions
+   - Chart specifications
+   - HTML output settings
+   - Validation rules
+
+================================================================================
+CHART TYPE DIRECTORIES (4)
+================================================================================
+
+1. sankey/
+   Status: 🟢 PRODUCTION
+   Files: README.md, .status
+   Charts: 2 (unified_flow_2024, outflows_detailed_2024)
+
+2. bar_charts/
+   Status: ⚪ PLANNED
+   Files: README.md, .status
+   Charts: 3 (top_committees, party_comparison, type_breakdown)
+
+3. time_series/
+   Status: ⚪ PLANNED
+   Files: README.md, .status
+   Charts: 3 (monthly_trends, cumulative_spending, seasonal_patterns)
+
+4. network/
+   Status: ⚪ PLANNED
+   Files: README.md, .status
+   Charts: 2 (committee_relationships, money_flow_network)
+
+================================================================================
+STATUS FILES (4)
+================================================================================
+
+1. sankey/.status
+   - Sankey diagram status (YAML)
+   - Production-ready
+   - 2 charts listed
+
+2. bar_charts/.status
+   - Bar chart status (YAML)
+   - Planned
+   - 3 charts listed
+
+3. time_series/.status
+   - Time series status (YAML)
+   - Planned
+   - 3 charts listed
+
+4. network/.status
+   - Network diagram status (YAML)
+   - Planned
+   - 2 charts listed
+
+================================================================================
+PYTHON SCRIPTS (3)
+================================================================================
+
+1. scripts/generate_all_charts.py
+   - Generates all charts
+   - Reports status
+   - Handles errors gracefully
+
+2. scripts/validate_charts.py
+   - Validates chart files
+   - Checks DOCTYPE
+   - Verifies colors
+   - Reports file sizes
+
+3. scripts/update_status.py
+   - Updates status files
+   - Shows current status
+   - Supports command-line arguments
+
+================================================================================
+TEMPLATES (1)
+================================================================================
+
+1. templates/chart_template.py
+   - Generic chart template
+   - Starting point for new charts
+   - Includes configuration loading
+   - Data processing example
+
+================================================================================
+CHART STATUS SUMMARY
+================================================================================
+
+Production-Ready (🟢):
+  - sankey_unified_flow_2024.html
+  - sankey_outflows_detailed_2024.html
+
+Planned (⚪):
+  - bar_top_committees_2024.html
+  - bar_party_comparison_2024.html
+  - bar_committee_type_breakdown_2024.html
+  - timeseries_monthly_trends_2024.html
+  - timeseries_cumulative_spending_2024.html
+  - timeseries_seasonal_patterns_2024.html
+  - network_committee_relationships_2024.html
+  - network_money_flow_network_2024.html
+
+Total: 10 charts (2 production, 8 planned)
+
+================================================================================
+COLOR SCHEME
+================================================================================
+
+Republican:
+  Full Color:  #CC0000 (rgba(204, 0, 0, 1))
+  Light Color: #FFB4B4 (rgba(255, 180, 180, 1))
+
+Democratic:
+  Full Color:  #003399 (rgba(0, 51, 153, 1))
+  Light Color: #ADD8E6 (rgba(173, 216, 230, 1))
+
+Unknown:
+  Full Color:  #808080 (rgba(128, 128, 128, 1))
+  Light Color: #D3D3D3 (rgba(211, 211, 211, 1))
+
+================================================================================
+NAMING CONVENTIONS
+================================================================================
+
+Chart Output Files:
+  Format: {chart_type}_{description}_{year}.html
+  Example: sankey_unified_flow_2024.html
+
+Data Files:
+  Format: {data_source}_{description}_{year}.{ext}
+  Example: fec_committees_combined.parquet
+
+Scripts:
+  Format: {action}_{chart_type}.py
+  Example: generate_sankey.py
+
+Directories:
+  Format: {chart_type}/
+  Example: sankey/, bar_charts/, time_series/
+
+================================================================================
+QUICK START COMMANDS
+================================================================================
+
+Generate all charts:
+  python3 charts/scripts/generate_all_charts.py
+
+Validate charts:
+  python3 charts/scripts/validate_charts.py
+
+View status:
+  python3 charts/scripts/update_status.py --show
+
+Update chart status:
+  python3 charts/scripts/update_status.py --chart {path} --status production
+
+================================================================================
+DIRECTORY STRUCTURE
+================================================================================
+
+charts/
+├── README.md
+├── CHART_STATUS.md
+├── NAMING_CONVENTIONS.md
+├── INDEX.md
+├── DIRECTORY_STRUCTURE.md
+├── SETUP_GUIDE.md
+├── IMPLEMENTATION_SUMMARY.md
+├── QUICK_START.md
+├── MANIFEST.txt
+├── CONFIG.yaml
+├── sankey/
+│   ├── README.md
+│   └── .status
+├── bar_charts/
+│   ├── README.md
+│   └── .status
+├── time_series/
+│   ├── README.md
+│   └── .status
+├── network/
+│   ├── README.md
+│   └── .status
+├── templates/
+│   └── chart_template.py
+└── scripts/
+    ├── generate_all_charts.py
+    ├── validate_charts.py
+    └── update_status.py
+
+================================================================================
+KEY FEATURES
+================================================================================
+
+✅ Clear Directory Structure
+   - Separates different chart types
+   - Organized by development status
+   - Easy to navigate and scale
+
+✅ Comprehensive Documentation
+   - README at every level
+   - Naming conventions documented
+   - Setup guide included
+   - Quick reference available
+
+✅ Status Tracking System
+   - .status files in each directory
+   - YAML format for easy parsing
+   - Tracks development progress
+   - Automated status updates
+
+✅ Consistent Naming Conventions
+   - Chart files: {type}_{description}_{year}.html
+   - Scripts: {action}_{type}.py
+   - Data files: {source}_{description}_{year}.{ext}
+   - Directories: lowercase with underscores
+
+✅ Automation Scripts
+   - Generate all charts at once
+   - Validate chart quality
+   - Update status automatically
+   - Report generation
+
+✅ Configuration Management
+   - Global CONFIG.yaml
+   - Color scheme consistency
+   - Plotly settings
+   - Data source definitions
+
+================================================================================
+GETTING STARTED
+================================================================================
+
+1. Read README.md for overview
+2. Run: python3 charts/scripts/generate_all_charts.py
+3. Run: python3 charts/scripts/validate_charts.py
+4. Open: analysis/outputs/sankey_unified_flow_2024.html
+5. Review: CHART_STATUS.md for next steps
+
+================================================================================
+DOCUMENTATION MAP
+================================================================================
+
+Need Overview?           → README.md
+Need Status?             → CHART_STATUS.md
+Need Naming Help?        → NAMING_CONVENTIONS.md
+Need Quick Reference?    → INDEX.md
+Need Directory Info?     → DIRECTORY_STRUCTURE.md
+Need Setup Help?         → SETUP_GUIDE.md
+Need Implementation?     → IMPLEMENTATION_SUMMARY.md
+Need Quick Start?        → QUICK_START.md
+Need Complete List?      → MANIFEST.txt (this file)
+
+================================================================================
+DEVELOPMENT ROADMAP
+================================================================================
+
+Q4 2024:
+  ✅ Sankey diagrams (COMPLETE)
+  🔵 Bar charts (IN PROGRESS)
+
+Q1 2025:
+  ⚪ Time series charts
+  ⚪ Network diagrams
+
+Q2 2025:
+  ⚪ Dashboard integration
+  ⚪ Advanced filtering
+
+================================================================================
+STATISTICS
+================================================================================
+
+Documentation Files:     9
+Configuration Files:     1
+Status Files:           4
+Python Scripts:         3
+Chart Directories:      4
+Chart Type READMEs:     4
+Templates:              1
+Total Files:           21
+Total Directories:      8
+Total Size:           136KB
+
+Production Charts:      2
+Planned Charts:         8
+Total Charts:          10
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Verify Setup
+   - Check Python 3.8+
+   - Check Plotly 6.1.2+
+   - Check data files exist
+
+2. Generate Charts
+   - Run generate_all_charts.py
+   - Validate with validate_charts.py
+
+3. Explore Charts
+   - Open HTML files in browser
+   - Test interactivity
+   - Verify colors
+
+4. Plan New Charts
+   - Review CHART_STATUS.md
+   - Follow SETUP_GUIDE.md
+   - Use templates
+
+5. Maintain System
+   - Keep documentation updated
+   - Update status files
+   - Monitor data freshness
+
+================================================================================
+SUPPORT
+================================================================================
+
+For questions or issues:
+1. Check relevant README.md
+2. Review CHART_STATUS.md for known issues
+3. Check NAMING_CONVENTIONS.md for naming questions
+4. Review CONFIG.yaml for configuration options
+5. See SETUP_GUIDE.md for troubleshooting
+
+================================================================================
+VERSION INFORMATION
+================================================================================
+
+Version:        1.0.0
+Created:        2024-10-26
+Status:         Complete and Ready to Use
+Maintainer:     Political Charts Team
+Repository:     political-charts
+
+================================================================================
+END OF MANIFEST
+================================================================================

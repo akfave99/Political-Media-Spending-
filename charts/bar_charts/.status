@@ -1,0 +1,42 @@
+chart_type: bar_charts
+status: planned
+last_updated: 2024-10-26
+version: 0.1
+description: "Bar charts for comparative spending analysis"
+
+charts:
+  - name: "Top Committees by Spending"
+    file: "bar_top_committees_2024.html"
+    status: planned
+    priority: high
+    estimated_completion: "TBD"
+    
+  - name: "Party Spending Comparison"
+    file: "bar_party_comparison_2024.html"
+    status: planned
+    priority: high
+    estimated_completion: "TBD"
+    
+  - name: "Committee Type Breakdown"
+    file: "bar_committee_type_breakdown_2024.html"
+    status: planned
+    priority: medium
+    estimated_completion: "TBD"
+
+generation_scripts: []
+
+data_sources:
+  - "fec_committees_combined.parquet"
+  - "outflows_schedule_b_recipients_2024.csv"
+
+dependencies:
+  - "plotly>=6.1.2"
+  - "pandas>=1.3.0"
+
+known_issues: []
+
+next_steps:
+  - "Implement top committees chart"
+  - "Implement party comparison chart"
+  - "Add filtering capabilities"
+

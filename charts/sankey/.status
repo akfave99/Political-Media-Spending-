@@ -1,0 +1,50 @@
+chart_type: sankey
+status: production
+last_updated: 2024-10-26
+version: 1.0
+description: "Sankey flow diagrams showing political money flows"
+
+charts:
+  - name: "Unified Flow 2024"
+    file: "sankey_unified_flow_2024.html"
+    status: production
+    last_updated: 2024-10-26
+    data_year: 2024
+    features:
+      - "4-level hierarchical flow"
+      - "Top 50 committees"
+      - "Party affiliation color coding"
+      - "Interactive Plotly visualization"
+      - "Light colors for categories, vibrant for committees"
+    
+  - name: "Outflows Detailed 2024"
+    file: "sankey_outflows_detailed_2024.html"
+    status: production
+    last_updated: 2024-10-26
+    data_year: 2024
+    features:
+      - "3-level hierarchical flow"
+      - "Committee type categorization"
+      - "Party affiliation color coding"
+      - "Interactive Plotly visualization"
+
+generation_scripts:
+  - "analysis/unified_flow_sankey.py"
+  - "analysis/outflows_sankey_detailed.py"
+
+data_sources:
+  - "fec_committees_combined.parquet"
+  - "outflows_schedule_b_recipients_2024.csv"
+
+dependencies:
+  - "plotly>=6.1.2"
+  - "pandas>=1.3.0"
+  - "numpy>=1.21.0"
+
+known_issues: []
+
+next_steps:
+  - "Monitor for FEC data updates"
+  - "Consider adding filtering options"
+  - "Explore additional visualization levels"
+

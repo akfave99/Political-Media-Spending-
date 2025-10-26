@@ -1,0 +1,37 @@
+chart_type: network
+status: planned
+last_updated: 2024-10-26
+version: 0.1
+description: "Network diagrams for relationship visualization"
+
+charts:
+  - name: "Committee Relationships"
+    file: "network_committee_relationships_2024.html"
+    status: planned
+    priority: medium
+    estimated_completion: "TBD"
+    
+  - name: "Money Flow Network"
+    file: "network_money_flow_network_2024.html"
+    status: planned
+    priority: low
+    estimated_completion: "TBD"
+
+generation_scripts: []
+
+data_sources:
+  - "fec_committees_combined.parquet"
+  - "outflows_schedule_b_recipients_2024.csv"
+
+dependencies:
+  - "plotly>=6.1.2"
+  - "pandas>=1.3.0"
+  - "networkx>=2.6"
+
+known_issues: []
+
+next_steps:
+  - "Implement committee relationships network"
+  - "Implement money flow network"
+  - "Add filtering capabilities"
+

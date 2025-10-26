@@ -1,0 +1,191 @@
+# Global Configuration for Political Visualization Charts
+
+# Chart Generation Settings
+charts:
+  output_dir: "analysis/outputs"
+  data_dir: "charts/data"
+  template_dir: "charts/templates"
+  script_dir: "charts/scripts"
+
+# Color Scheme - Party Affiliation
+colors:
+  republican:
+    full: "#CC0000"      # Vibrant red for main committees
+    light: "#FFB4B4"     # Light red for category nodes
+    rgba_full: "rgba(204, 0, 0, 1)"
+    rgba_light: "rgba(255, 180, 180, 1)"
+  
+  democratic:
+    full: "#003399"      # Vibrant blue for main committees
+    light: "#ADD8E6"     # Light blue for category nodes
+    rgba_full: "rgba(0, 51, 153, 1)"
+    rgba_light: "rgba(173, 216, 230, 1)"
+  
+  unknown:
+    full: "#808080"      # Gray for unknown/non-partisan
+    light: "#D3D3D3"     # Light gray for category nodes
+    rgba_full: "rgba(128, 128, 128, 1)"
+    rgba_light: "rgba(211, 211, 211, 1)"
+
+# Plotly Configuration
+plotly:
+  version: "6.1.2"
+  cdn_url: "https://cdn.plot.ly/plotly-3.0.1.min.js"
+  
+  # Default layout settings
+  layout:
+    font_size: 10
+    height: 1200
+    width: 1600
+    plot_bgcolor: "white"
+    paper_bgcolor: "white"
+    
+  # Sankey-specific settings
+  sankey:
+    node_pad: 15
+    node_thickness: 20
+    node_line_color: "black"
+    node_line_width: 0.5
+    link_opacity: 0.4
+
+# Data Sources
+data_sources:
+  fec_committees:
+    file: "fec_committees_combined.parquet"
+    format: "parquet"
+    cycle: 2024
+    description: "FEC Committee data with party affiliation"
+  
+  fec_outflows:
+    file: "outflows_schedule_b_recipients_2024.csv"
+    format: "csv"
+    cycle: 2024
+    description: "FEC Schedule B outflows data"
+
+# Chart Specifications
+chart_specs:
+  sankey_unified_flow:
+    type: "sankey"
+    title: "Complete Money Flow: Type ➜ Designation ➜ Committee ➜ Recipient (2024, Top 50 Committees)"
+    subtitle: "🔴 Red = Republican | 🔵 Blue = Democratic | ⚫ Gray = Other/Unknown"
+    levels: 4
+    top_committees: 50
+    status: "production"
+    
+  sankey_outflows_detailed:
+    type: "sankey"
+    title: "Outflows: Committee Type ➜ Committee ➜ Recipient (Schedule B, 2024)"
+    subtitle: "🔴 Red = Republican | 🔵 Blue = Democratic | ⚫ Gray = Other/Unknown"
+    levels: 3
+    status: "production"
+
+# HTML Output Settings
+html:
+  include_plotlyjs: "cdn"
+  responsive: true
+  doctype: "<!DOCTYPE html>"
+  charset: "utf-8"
+  
+  # Meta tags
+  meta:
+    viewport: "width=device-width, initial-scale=1.0"
+    description: "Interactive political visualization charts showing FEC money flows"
+    author: "Political Charts Team"
+
+# Data Processing
+processing:
+  # Minimum flow value to include (in dollars)
+  min_flow_value: 0
+  
+  # Party affiliation inference
+  infer_party_from_flows: true
+  
+  # Node value calculation
+  calculate_node_values: true
+
+# Validation Rules
+validation:
+  # Check for DOCTYPE in HTML
+  require_doctype: true
+  
+  # Check for color rendering
+  validate_colors: true
+  
+  # Check for node heights
+  validate_node_heights: true
+  
+  # Minimum node height (pixels)
+  min_node_height: 1.0
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  format: "[%(asctime)s] %(levelname)s: %(message)s"
+  file: "charts/logs/generation.log"
+
+# Development Settings
+development:
+  debug_mode: false
+  verbose_output: true
+  save_intermediate_data: false
+  
+# Production Settings
+production:
+  debug_mode: false
+  verbose_output: false
+  save_intermediate_data: false
+  minify_html: false
+
+# Chart Generation Defaults
+defaults:
+  year: 2024
+  cycle: 2024
+  
+  # Default dimensions
+  dimensions:
+    height: 1200
+    width: 1600
+  
+  # Default font
+  font:
+    family: "Arial, sans-serif"
+    size: 10
+    color: "#000000"
+
+# File Naming Patterns
+naming:
+  chart_output: "{chart_type}_{description}_{year}.html"
+  data_file: "{data_source}_{description}_{year}.{ext}"
+  script_file: "{action}_{chart_type}.py"
+  status_file: ".status"
+
+# Directories to Create
+directories:
+  - "charts/sankey"
+  - "charts/bar_charts"
+  - "charts/time_series"
+  - "charts/network"
+  - "charts/templates"
+  - "charts/data"
+  - "charts/scripts"
+  - "charts/logs"
+  - "analysis/outputs"
+
+# Dependencies
+dependencies:
+  python:
+    - "plotly>=6.1.2"
+    - "pandas>=1.3.0"
+    - "numpy>=1.21.0"
+    - "pyyaml>=5.4.0"
+  
+  system:
+    - "Python 3.8+"
+    - "2GB+ RAM"
+    - "Modern web browser"
+
+# Version Information
+version: "1.0.0"
+last_updated: "2024-10-26"
+maintainer: "Political Charts Team"
+
