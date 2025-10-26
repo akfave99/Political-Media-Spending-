@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Schedule - Due Dates & Assignments</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: rgba(240, 240, 240, 0.5);
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .legend {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(100, 100, 100, 0.5);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .legend-item {
+            display: inline-block;
+            margin: 5px 15px;
+            font-size: 12px;
+        }
+        
+        .legend-color {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        
+        .sankey-container {
+            position: relative;
+            width: 100%;
+            min-height: 800px;
+            padding: 20px 0;
+        }
+        
+        .flow-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .node {
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #333;
+            border: 1px solid rgba(0,0,0,0.2);
+            min-width: 150px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .node-date {
+            background: rgba(100, 150, 200, 0.8);
+            color: white;
+        }
+        
+        .node-assignment {
+            background: rgba(150, 200, 100, 0.8);
+            color: white;
+        }
+        
+        .node-paper {
+            background: rgba(255, 165, 0, 0.8);
+            color: white;
+        }
+        
+        .node-exam {
+            background: rgba(200, 100, 100, 0.8);
+            color: white;
+        }
+        
+        .arrow {
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(to right, rgba(200, 200, 200, 0.6), rgba(200, 200, 200, 0.4));
+            margin: 0 20px;
+            position: relative;
+        }
+        
+        .arrow::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -5px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid rgba(200, 200, 200, 0.4);
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+        }
+        
+        .multi-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .flow-group {
+            margin-bottom: 40px;
+        }
+        
+        .date-label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .flow-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .arrow {
+                width: 3px;
+                height: 30px;
+                margin: 10px auto;
+                background: linear-gradient(to bottom, rgba(200, 200, 200, 0.6), rgba(200, 200, 200, 0.4));
+            }
+            
+            .arrow::after {
+                right: -5px;
+                top: auto;
+                bottom: -8px;
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 12px solid rgba(200, 200, 200, 0.4);
+            }
+            
+            .node {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Course Schedule - Due Dates & Assignments</h1>
+        
+        <div class="legend">
+            <div class="legend-title">Grading Breakdown:</div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: rgba(100, 150, 200, 0.8);"></span>
+                Blue - Discussions (Every meeting date): 30%
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: rgba(150, 200, 100, 0.8);"></span>
+                Green - Assignments (Unit lesson folders): 20%
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: rgba(255, 165, 0, 0.8);"></span>
+                Orange - Course Paper (Due Nov 23 @ 11:59pm): 20%
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: rgba(200, 100, 100, 0.8);"></span>
+                Red - Exams (Mid-term & Final): 30%
+            </div>
+        </div>
+        
+        <div class="sankey-container">
+            <!-- Nov 2 -> Unit 1 -->
+            <div class="flow-group">
+                <div class="flow-row">
+                    <div class="node node-date">Nov 2</div>
+                    <div class="arrow"></div>
+                    <div class="node node-assignment">Unit 1 (L1-5)</div>
+                </div>
+            </div>
+            
+            <!-- Nov 9 -> Unit 2 (L1-2) -->
+            <div class="flow-group">
+                <div class="flow-row">
+                    <div class="node node-date">Nov 9</div>
+                    <div class="arrow"></div>
+                    <div class="node node-assignment">Unit 2 (L1-2)</div>
+                </div>
+            </div>
+            
+            <!-- Nov 16 -> Unit 2 (L3-4) -->
+            <div class="flow-group">
+                <div class="flow-row">
+                    <div class="node node-date">Nov 16</div>
+                    <div class="arrow"></div>
+                    <div class="node node-assignment">Unit 2 (L3-4)</div>
+                </div>
+            </div>
+            
+            <!-- Nov 17 -> Mid-term Exam -->
+            <div class="flow-group">
+                <div class="flow-row">
+                    <div class="node node-date">Nov 17</div>
+                    <div class="arrow"></div>
+                    <div class="node node-exam">Mid-term Exam</div>
+                </div>
+            </div>
+            
+            <!-- Nov 23 -> Multiple assignments -->
+            <div class="flow-group">
+                <div class="date-label">Nov 23 flows to:</div>
+                <div class="multi-flow">
+                    <div class="flow-row">
+                        <div class="node node-date">Nov 23</div>
+                        <div class="arrow"></div>
+                        <div class="node node-assignment">Unit 3 (L1-2)</div>
+                    </div>
+                    <div class="flow-row">
+                        <div class="node node-date">Nov 23</div>
+                        <div class="arrow"></div>
+                        <div class="node node-assignment">Unit 3 (L2-5)</div>
+                    </div>
+                    <div class="flow-row">
+                        <div class="node node-date">Nov 23</div>
+                        <div class="arrow"></div>
+                        <div class="node node-paper">Course Paper</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nov 30 -> Unit 4 (L1-3) -->
+            <div class="flow-group">
+                <div class="flow-row">
+                    <div class="node node-date">Nov 30</div>
+                    <div class="arrow"></div>
+                    <div class="node node-assignment">Unit 4 (L1-3)</div>
+                </div>
+            </div>
+            
+            <!-- Dec 7 -> Unit 4 (L4-7) -->
+            <div class="flow-group">
+                <div class="flow-row">
+                    <div class="node node-date">Dec 7</div>
+                    <div class="arrow"></div>
+                    <div class="node node-assignment">Unit 4 (L4-7)</div>
+                </div>
+            </div>
+            
+            <!-- Dec 14 -> Unit 5 -->
+            <div class="flow-group">
+                <div class="flow-row">
+                    <div class="node node-date">Dec 14</div>
+                    <div class="arrow"></div>
+                    <div class="node node-assignment">Unit 5 (L1-5)</div>
+                </div>
+            </div>
+            
+            <!-- Dec 17 -> Final Exam -->
+            <div class="flow-group">
+                <div class="flow-row">
+                    <div class="node node-date">Dec 17</div>
+                    <div class="arrow"></div>
+                    <div class="node node-exam">Final Exam</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
